@@ -72,7 +72,7 @@
 				    	break; 
 				    case 4: 
 				    	//Loans 
-				   		$ussd_text="END <br>You are not legible to receive loans. You must use Leja for at least six months./nThank you.";  
+				   		$ussd_text="END <br>You are not legible to receive loans. You must use Leja for at least six months.\nThank you.";  
 			   			ussd_proceed($ussd_text);
 				    	break;
 				    case 5:
@@ -429,13 +429,41 @@
 		$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 		// More headers
-		$headers .= 'From: Leja Business Statements <statements@leja.co.ke>' . "\r\n";
+		$headers .= 'From: Leja Business Statements <statements@leja.co.ke>' . "\n";
 		$headers .= "Return-Path: statements@leja.co.ke\n"; // Return path for errors
+		$headers .= "Content-type: text/html; charset=iso-8859-1";
 		$headers .= 'X-Mailer: PHP/' . phpversion();
 
 		$retval = mail($to,$subject,$message,$headers);
+		
+
+		//Also send a message
+		$clean_message = "LEJA MINI-STATEMENT"."\n";
+		
+		while ($row=mysqli_fetch_array($result)){		
+			$clean_message .= '
+					$row[_date]
+					$row[purchases]
+					$row[expenditure]
+					$row[sales]
+					$row[balance]
+					';
+           	$total_purchases += $row['purchases'];
+           	$total_expenditure += $row['expenditure'];
+           	$total_sales += $row['sales'];
+            $no++;
+		}//End while
+
+		$clean_message .="Total sales:".$total_sales."\n";
+		$clean_message .="Total purchases:".$total_purchases."\n";
+		$clean_message .="Total Expenditure;".$total_expenditure."\n";
+		$clean_message .="Net Total:".($total_sales-($total_expenditure + $total_purchases))."\n"; 
+
+		// Send sms
+		sendSMS($phone, $clean_message);
+
 		if($retval == TRUE){
-			$ussd_text = "END Your statement has been sent to your email.";
+			$ussd_text = "END We have sent you an SMS with your statement and another copy to your email.";
 			ussd_proceed($ussd_text);
 		}else{
 			$ussd_text = "END Ooops!<br>
@@ -444,56 +472,16 @@
 			ussd_proceed($ussd_text);
 		}
 
-		//Also send a message
-		$clean_message = "HERE IS YOUR BUSINESS STATEMENT"."\n";
-		$clean_message .= '<table style="font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #999999;border-collapse: collapse;">
-						<tr>
-							<th style="background:#b5cfd2;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">Date</th>
-							<th style="background:#b5cfd2;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">Purchases</th>
-							<th style="background:#b5cfd2;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">Expenditure</th>
-							<th style="background:#b5cfd2;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">Sales</th>
-							<th style="background:#b5cfd2;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">Balance</th>
-						</tr>
-				';
-		
-		while ($row=mysqli_fetch_array($result)){		
-			$clean_message .= '
-				<tr>
-					<td style="background:#F5F5F5;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">'.$row['_date'].'</td>
-		            <td style="background:#F5F5F5;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">'.$row['purchases'].'</td>
-		            <td style="background:#F5F5F5;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">'.$row['expenditure'].'</td>
-		            <td style="background:#F5F5F5;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">'.$row['sales'].'</td>
-		            <td style="background:#F5F5F5;border-width: 1px;padding: 8px;border-style: solid;border-color: #999999;">'.$row['balance'].'</td>
-	           	</tr>';
-           	$total_purchases += $row['purchases'];
-           	$total_expenditure += $row['expenditure'];
-           	$total_sales += $row['sales'];
-            $no++;
-			}//End while
-
-		$clean_message .= "</table>";
-		$clean_message .= "</body></html>";
-
-		$clean_message .= "<br>";
-		$clean_message .= '<h3 style="color: lightgrey;">Grand totals</h3>';
-		$clean_message .="Total sales:".$total_sales."<br>";
-		$clean_message .="Total purchases:".$total_purchases."<br>";
-		$clean_message .="Total Expenditure;".$total_expenditure."<br>";
-		$clean_message .="Net Total:".($total_sales-($total_expenditure + $total_purchases))."<br>"; 
-		sendSMS('("+".$phone)', $clean_message);
-
 		$conne->close();
 	}
 
 	function sendSMS($recepient, $message){
 		require_once('AfricasTalkingGateway.php');
 
-		$message = "Hello world!";
-
 		$username   = "brianokinyi";
-		$apikey     = "72ee5e6f21378af8375c674f7d2c1a0ed0ff6d40a3e7932bb8032bd1661d2865";
+		$apikey     = "1c5223686d70be30004883b4be54a7c3fa29a063d0716ba2d7164ece2434e409";
 
-		$gateway    = new AfricasTalkingGateway($username, $apikey, "sandbox");
+		$gateway    = new AfricasTalkingGateway($username, $apikey);
 
 		try 
 		{
