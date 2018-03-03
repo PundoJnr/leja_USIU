@@ -20,7 +20,17 @@
 	//NGROK
 	$user_phonenumber = $_POST['phoneNumber'];
     $phonenumber = str_replace("+", "", $user_phonenumber); 	//remove the "+" in phone number
-    $sessionID = $_POST['sessionId'];  
+	$sessionID = $_POST['sessionId'];  
+	
+
+
+
+
+
+
+
+
+	
     $servicecode = $_POST['serviceCode'];  
     $ussdString = $_POST['text'];
 
@@ -98,7 +108,7 @@
 				    	break; 
 				    case 4: 
 				    	//Loans 
-				   		$ussd_text="END <br>You are not legible to receive loans. You must use Leja for at least six months./nThank you.";  
+				   		$ussd_text="END <br>Huwezi kupokea mikopo. Lazima utumie Leja kwa angalau miezi sita. Asante.";  
 			   			ussd_proceed($ussd_text);
 				    	break;
 				    case 5:
@@ -114,7 +124,7 @@
 				    	die();
 				    	break;
 				    default:
-				    	$ussd_text = "Invalid option";
+				    	$ussd_text = "Chaguo batili";
 						ussd_proceed($ussd_text);
 				    	break; 
 				}  
@@ -123,7 +133,7 @@
 		else{
 		  	//Registration menu
 		  	 if ($level==0){  
-			    	$ussd_text="CON \nWelcome to LEJA.\n1. Register\n2. About Leja\n3. Choose Kiswahili";  
+			    	$ussd_text="CON \Karibu LEJA.\n1. Daftari\n2. Kuhusu Leja\n3. Kiswahili";  
 			   		ussd_proceed($ussd_text);    
 			    } 
 				
@@ -154,12 +164,12 @@
 
 
 	function displaymenu(){  
-		$ussd_text="CON \n1: Update Purchases\n2: Update Sales\n3: Profits and Losses \n4: Loans \n5: Statements \n 6: Help \n00: Exit";  
+		$ussd_text="CON \n1: Sasisha Ununuzi\n2: Sasisha Mauzo\n3: Faida na Hutoa \n4: Mikopo \n5: Taarifa na Taarifa fupi \n 6: Usaidizi \n00: Toka";  
 		ussd_proceed($ussd_text);  
 	}
 
 	function displayNewMemberMenu(){
-		$ussd_text = "CON \nWe are happy to see you here.<br>1. Create new order <br>00. Exit";
+		$ussd_text = "CON \nTunafurahi kukuona hapa.<br>1. Unda stoke mpya <br>00. Exit";
 		ussd_proceed($ussd_text);
 	}
 
@@ -179,27 +189,27 @@
 
 	function register($details,$phone, $conne){      
 		if (count($details)==1){  
-			$ussd_text="CON \n Enter your first name:";  
+			$ussd_text="CON \n Weka jina la kwanza:";  
 			ussd_proceed($ussd_text);  
 		} 
 		else if(count($details) == 2){		  
-			$ussd_text = "CON Enter your last name:\n";  
+			$ussd_text = "CON Weka jina la mwisho:\n";  
 			ussd_proceed($ussd_text);
 		}
 		else if(count($details) == 3){		  
-			$ussd_text = "CON Enter your National ID number:\n";  
+			$ussd_text = "CON Weka nambari yako ya kitambulisho:\n";  
 			ussd_proceed($ussd_text);  
 		}
 		else if(count($details) == 4){
-			$ussd_text = "CON <br> Enter your email address";
+			$ussd_text = "CON <br> Weka anwani ya barua pepe";
 			ussd_proceed($ussd_text);
 		}
 		else if(count($details) == 5){		  
-			$ussd_text = "CON \n Enter your type of business:\n";  
+			$ussd_text = "CON \n Weka aina ya biashara:\n";  
 			ussd_proceed($ussd_text);  
 		}
 		else if(count($details) == 6){		  
-			$ussd_text = "CON \n Reply with your residential county:\n";  
+			$ussd_text = "CON \n Jibu na kata yako ya makazi:\n";  
 			ussd_proceed($ussd_text);  
 		}
 		else if(count($details) == 7){  
@@ -240,7 +250,7 @@
 					VALUES ('$fname', '$sname', '$phone', '$id_number', '$email', '$business_type', '$county', '$username', 'MOBILE')";
 			if($conne->query($sql) == TRUE){
 				create_table($phone, $conne);
-				$message = "Thank you $fname for choosing Leja.\nYou are now our new member.";
+				$message = "Asante $fname Kwa kuchagua Leja.\n Wewe sasa ni mwanachama mpya.";
 				sendSMS(("+".$phone), $message);
 				echo "END ".$message;
 			}
@@ -278,7 +288,7 @@
 
 
     function about(){
-    	$ussd_text="END <br>Leja is a USSD based inventory management system. Leja helps you keep records and make calculation of your business to ensure you convenience and profits.<br>Visit http://www.leja.co.ke to learn more";   
+    	$ussd_text="END <br>Leja ni mfumo wa usimamizi wa hesabu wa USSD. Leja inakusaidia kuweka kumbukumbu na kufanya hesabu ya biashara yako ili kuhakikisha urahisi na faida.<br>Tembelea http://www.leja.co.ke kujifunza zaidi";   
 		ussd_proceed($ussd_text);
     }
 
@@ -286,11 +296,11 @@
 
     function update_purchases($details,$phone, $active_user, $conne){
 	    if (count($details)==1){  
-		    $ussd_text="CON \nEnter value of the goods you have bought today: ";  
+		    $ussd_text="CON \n Ingiza thamani ya bidhaa ulizonunulia leo: ";  
 		    ussd_proceed($ussd_text);  
 	    }  
 	    else if (count($details)==2){  
-		    $ussd_text="CON \nExtra expenditure on goods(eg. transportation)";  
+		    $ussd_text="CON \n Matumizi ya ziada kwa bidhaa (kwa mfano usafirishaji)";  
 		    ussd_proceed($ussd_text);  
 	    }  
 
@@ -323,7 +333,7 @@
 		    $sql = "INSERT INTO $active_user (purchases,expenditure,balance) VALUES ('$purchases','$expenditure','$t_bal')"; 
 
 		    if($conne->query($sql) == TRUE){
-		        $ussd_text="END \nYou have successfully recorded your purchases";  
+		        $ussd_text="END \n Umeandika manunuzi kwa mafanikio";  
 		    	ussd_proceed($ussd_text);
 		    }
 		    else{
@@ -335,7 +345,8 @@
 
 	function update_sales($details,$phone, $active_user, $conne){
 	     if (count($details)==1){  
-		    $ussd_text="CON \nEnter the total value of all goods sold today";  
+		    $ussd_text="CON \n 
+			Ingiza thamani ya jumla ya bidhaa zote kuuzwa leo";  
 		    ussd_proceed($ussd_text);  
 	    }   
 
@@ -363,7 +374,7 @@
 		    $sql = "INSERT INTO $active_user (sales,balance) VALUES ( '$sales','$t_bal')"; 
 
 		    if($conne->query($sql) == TRUE){
-		    	$ussd_text="END \nYou have successfully recorded your sales";  
+		    	$ussd_text="END \n Umeandika kumbukumbu yako kwa ufanisi";  
 		    	ussd_proceed($ussd_text);
 		    }
 		    else{
@@ -381,17 +392,17 @@
 				//calculations
 			    $t_bal = $row["balance"];
 			    if($t_bal > 0){
-			    	$ussd_text="END \nYou have a LOSS of: $t_bal. Sell more products and earn.";  
+			    	$ussd_text="END \nUna POSA ya: $t_bal. Uuza bidhaa zaidi na ulipate.";  
 		   			ussd_proceed($ussd_text);
 			    }elseif ($t_bal < 0){
-			    	$ussd_text="END \nYou have a PROFIT of: ".-1*$t_bal."Keep selling your goods and earn more";  
+			    	$ussd_text="END \nUna faida ya: ".-1*$t_bal."Endelea kuuza bidhaa zako ili upate zaidi";  
 		   			ussd_proceed($ussd_text);
 			    }else{
-			    	$ussd_text = "END \nYour profit and loss is balanced";
+			    	$ussd_text = "END \n faida na hasara yako ni sawa";
 			    	ussd_proceed($ussd_text);
 			    }
 			} else {
-				$ussd_text = "No results";
+				$ussd_text = "Hakuna matokeo";
 				ussd_proceed($ussd_text);
 		}
 	}
@@ -404,8 +415,8 @@
 
 		$result = $conne->query($sql);
 		if(!$result){
-			$ussd_text = "END Ooops!<br>
-						We cannot find your email. $phone
+			$ussd_text = "END Salale!<br>
+					Hatuwezi kupata barua pepe yako. $phone
 					";
 			ussd_proceed($ussd_text);
         }else{
@@ -417,7 +428,7 @@
 		$result =$conne->query($sql);
 		if(!$result)
 		{
-			$ussd_text = "END No results";
+			$ussd_text = "END Hakuna matokeo";
 			ussd_proceed($ussd_text);
 		}
 
