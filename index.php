@@ -14,9 +14,6 @@
 	$password = "";
 	$dbname="leja";
 */
-	
-
-
 	//NGROK
 	$user_phonenumber = $_POST['phoneNumber'];
     $phonenumber = str_replace("+", "", $user_phonenumber); 	//remove the "+" in phone number
@@ -39,9 +36,7 @@
 	// Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
-	}else
-		//echo "Connected to database successfully <br/><br/>";
-
+	}
 
 	$level =0; 
 
@@ -54,37 +49,16 @@
     //echo ussd_text
     function ussd_proceed ($ussd_text){  
     	echo $ussd_text;  
-    	//exit(0);  
-    }
+	}
 	
-
 	//If user exists or not
     $query = "SELECT * from subscribers where phone_Number ='$phonenumber'";
 	if ($result=mysqli_query($conn,$query)){
 		if(mysqli_num_rows($result) > 0){
-			//View my account menu
-			
+			//View my account menu			
 			if ($level==0){
-
-				
 				displaymenu();
-
-
-				/*
-				//Check if table is empty
-				$query = "SELECT * FROM $username";
-				// execute query 
-				$result = mysqli_query($conn, $query) or die ("Error in query: $query. ".mysqli_error($conn)); 
-				// see if any rows were returned 
-				if (mysqli_num_rows($result) > 0) { //===Table exist======= Some orders exist
-					displaymenu();
-				}
-				else{//====Nothing in table====== No orders
-					displayNewMemberMenu();
-				} 
-				*/
-			}  		   
-			      
+			}    
 		    if ($level>0){  
 			    switch ($ussdString_explode[0]) {  
 				    case 1: //Update stock 
@@ -117,7 +91,7 @@
 				    	$ussd_text = "Invalid option";
 						ussd_proceed($ussd_text);
 				    	break; 
-				}  
+				}  //End switch
 		    }  
 		}
 		else{
@@ -143,7 +117,7 @@
 					    	require("lejaSwahili.php");
 					    	die();
 				    		break;
-				    }  
+				    }//End switch  
 			    }  	
 			}//End else
 		}
@@ -151,7 +125,6 @@
 		    $ussd_text = "Query failed";
 			ussd_proceed($ussd_text);
 		}
-
 
 	function displaymenu(){  
 		$ussd_text="CON \n1: Update Purchases\n2: Update Sales\n3: Profits and Losses \n4: Loans \n5: Statements \n 6: Help \n00: Exit";  
@@ -233,8 +206,6 @@
 			//============   Tablename    ===================
 			$username = "lj".$phone;
 
-
-
 			//=================Write into database all the details=========================== 
 			$sql = "INSERT INTO subscribers (first_Name, last_Name, phone_Number, id_Number, email, business_Type, county, username, registration_Platform) 
 					VALUES ('$fname', '$sname', '$phone', '$id_number', '$email', '$business_type', '$county', '$username', 'MOBILE')";
@@ -276,13 +247,10 @@
 		}
     }
 
-
     function about(){
     	$ussd_text="END <br>Leja is a USSD based inventory management system. Leja helps you keep records and make calculation of your business to ensure you convenience and profits.<br>Visit http://www.leja.co.ke to learn more";   
 		ussd_proceed($ussd_text);
     }
-
-	
 
     function update_purchases($details,$phone, $active_user, $conne){
 	    if (count($details)==1){  
@@ -306,8 +274,6 @@
 		    	$expenditure = NULL;
 		    } 
 
-
-
 		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
 		$result = $conne->query($sql);
 		if ($result->num_rows > 0) {
@@ -316,9 +282,7 @@
 			    $t_bal = $row["balance"] + $purchases + $expenditure;
 			} else {
 			    echo "0 results";
-			}   
-
-
+			}
 	      
 		    $sql = "INSERT INTO $active_user (purchases,expenditure,balance) VALUES ('$purchases','$expenditure','$t_bal')"; 
 
@@ -329,7 +293,6 @@
 		    else{
 		        echo "error: ".$sql ."<br>" .$conne->error;
 		    }
-
 	    }  
 	}
 
@@ -347,7 +310,6 @@
 		    	$purchases = NULL;
 		    }
 
-
 		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
 		$result = $conne->query($sql);
 		if ($result->num_rows > 0) {
@@ -356,10 +318,7 @@
 			    $t_bal = $row["balance"] - $sales;
 			} else {
 			   // echo "0 results";
-			}   
-
-
-	      
+			}	      
 		    $sql = "INSERT INTO $active_user (sales,balance) VALUES ( '$sales','$t_bal')"; 
 
 		    if($conne->query($sql) == TRUE){
@@ -369,7 +328,6 @@
 		    else{
 		        echo "error: ".$sql ."<br>" .$conne->error;
 		    }
-
 	    }  
 	}
 
@@ -395,8 +353,6 @@
 				ussd_proceed($ussd_text);
 		}
 	}
-
-
 
 	function statements($details,$phone, $active_user, $conne){
 		//Fetch email address of user
@@ -425,7 +381,6 @@
 		$total_sales = 0;
 		$total_purchases = 0;
 		$total_expenditure = 0;
-
 		
 		//mail to:
 		$subject = "Statements for your business";
@@ -549,7 +504,6 @@
 		{
 			//echo "Encountered an error while sending: ".$e->getMessage();
 		}
-
 	}
 
 	function getHelp() {
