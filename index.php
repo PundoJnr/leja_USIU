@@ -106,7 +106,7 @@
 							register($ussdString_explode,$phonenumber, $conn, $isSwahili);  
 							break;
 						default:						
-							$ussd_text = "Invalid choice.";
+							$ussd_text = "INVALID CHOICE.";
 							ussd_proceed($ussd_text);
 				    }//End switch  
 			    }  	
@@ -133,10 +133,9 @@
 		if ($result->num_rows > 0){
 			$row = fetch_assoc();
 			$ussd_text = "END <br>Account Details<br>";
-			$ussd_text .= $row["first_Name"]." ".$row["last_Name"]."<br>";
+			$ussd_text .= $row["Name"]."<br>";
 			$ussd_text .= "Id Number: ".$row["id_Number"]."<br>";
 			$ussd_text .= "Business Type: ".$row["business_Type"]."<br>";
-			$ussd_text .= "County: ".$row["county"]."<br>";
 			ussd_proceed($ussd_text);
 		}
 	}
