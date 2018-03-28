@@ -75,7 +75,7 @@
 				    	die();
 				    	break;
 				    default:
-				    	$ussd_text = "Invalid option";
+				    	$ussd_text = "INVALID OPTION";
 						ussd_proceed($ussd_text);
 				    	break; 
 				}  //End switch
