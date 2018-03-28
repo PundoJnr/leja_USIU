@@ -144,57 +144,32 @@
 	function register($details,$phone, $conne, $isSwahili){      
 		if (count($details)==1){   
 			if($isSwahili == 1)
-				$ussd_text="CON \n Weka jina la kwanza:";  
+				$ussd_text="CON \n EKEZA MAJINA:";  
 			else 
-				$ussd_text="CON \n Enter your first name:";
+				$ussd_text="CON \n ENTER NAMES:";
 			ussd_proceed($ussd_text);
  
 		} 
 		else if(count($details) == 2){
 			  
 			if($isSwahili == 1)
-				$ussd_text = "CON Weka jina la mwisho:\n";  
+				$ussd_text = "CON EKEZA NAMBARI YA KITAMBULISHO:\n";  
 			else 
-				$ussd_text="CON Enter your last name:\n";
+				$ussd_text="CON ENTER ID NUMBER:\n";
 			ussd_proceed($ussd_text);
 		}
 		else if(count($details) == 3){	 
 			if($isSwahili == 1)
-				$ussd_text= "CON Weka nambari yako ya kitambulisho:\n";  
+				$ussd_text= "CON EKEZA AINA YA BIASHARA:\n";  
 			else 
-				$ussd_text="CON Enter your National ID number:\n";  
+				$ussd_text="CON ENTER TYPE OF BUSINESS:\n";  
 			ussd_proceed($ussd_text);  
-		}
-		else if(count($details) == 4){
-				 
-			if($isSwahili == 1)
-				$ussd_text = "CON \n Weka anwani ya barua pepe";
-			else 
-				$ussd_text="CON \n Enter your email address";
-			ussd_proceed($ussd_text);
-		}
-		else if(count($details) == 5){
-			if($isSwahili == 1)
-				$ussd_text = "CON \n Weka aina ya biashara:\n";  
-			else 
-				$ussd_text = "CON \n Enter your type of business:\n";  
-			ussd_proceed($ussd_text);  
-		}
-		else if(count($details) == 6){
-			if($isSwahili == 1)
-				$ussd_text = "CON \n Jibu na kata yako ya makazi:\n";  
-			else 
-				$ussd_text = "CON \n Reply with your residential county:\n";  
-			ussd_proceed($ussd_text);  
-			 
 		}
 		else if(count($details) == 7){  
-			$fname=$details[1];
-			$sname=$details[2];  
-			$id_number=$details[3];
-			$email = $details[4];
-			$business_type=$details[5];    
-			$county=$details[6];
+			$name=$details[1];			
+			$id_number=$details[2];
+			$business_type=$details[3];    
+			
 
 			//Validate and sanitize
 			if(!filter_var($fname, FILTER_SANITIZE_STRING) === TRUE){
