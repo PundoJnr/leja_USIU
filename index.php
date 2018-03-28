@@ -1,19 +1,6 @@
 <?php
     // Try using POST with online NGROK and sandbox
-/*
-	$phonenumber = $_GET['MSISDN'];  
-    $sessionID = $_GET['sessionId'];  
-    $servicecode = $_GET['serviceCode'];  
-    $ussdString = $_GET['text'];
 
-*/
-/*
-    //Connet to database
-    $servername = "localhost";
-	$dbase_username = "root";
-	$password = "";
-	$dbname="leja";
-*/
 	//NGROK
 	$user_phonenumber = $_POST['phoneNumber'];
     $phonenumber = str_replace("+", "", $user_phonenumber); 	//remove the "+" in phone number
@@ -97,7 +84,7 @@
 		else{
 		  	//Registration menu
 		  	 if ($level==0){  
-			    	$ussd_text="CON \nWelcome to LEJA.\n1. Register\n2. About Leja\n3. Choose Kiswahili";  
+			    	$ussd_text="CON \nWELCOME TO LEJA.\n1. REGISTER\n2. ABOUT LEJA\n3. KISWAHILI";  
 			   		ussd_proceed($ussd_text);    
 			    } 
 				
