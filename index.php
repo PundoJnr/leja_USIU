@@ -279,9 +279,9 @@
 	function update_purchases_kiosk($details,$phone, $active_user, $conne){		
 	    if (count($details)==1){ 
 			if($isSwahili == 1)
-		    	$ussd_text="CON \n Ingiza thamani ya bidhaa ulizonunulia leo: ";  
+		    	$ussd_text="CON \n Ingiza thamani ya mikate uliyouza leo: ";  
 			else 
-		    	$ussd_text="CON \nBread value sold today? ";  
+		    	$ussd_text="CON \n Bread value sold today? ";  
 			ussd_proceed($ussd_text);  
 	    }  
 	    else if (count($details)==2){  
