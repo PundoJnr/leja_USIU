@@ -59,7 +59,7 @@
 				    	break; 
 				    case 4: 
 				    	//Loans 
-				   		$ussd_text="END \nYou are not legible to receive loans. You must use Leja for at least six months.\nThank you.";  
+				   		$ussd_text="END \n YOU ARE NOT LEGIBLE FOR LEJA LOANS AT THE MOMENT. YOU MUST HAVE USED LEJA FOR MORE THAN 6 MONTHS\nTHANK YOU.";  
 			   			ussd_proceed($ussd_text);
 				    	break;
 				    case 5:
@@ -128,7 +128,7 @@
 	}
 
 	function display_my_account_menu($details,$phone, $active_user, $conne){
-		$sql = "SELECT fisrt_Name, last_Name, id_Number, business_Type, county FROM subscribers WHERE username = '$active_user";
+		$sql = "SELECT Name, id_Number, business_Type FROM subscribers WHERE username = '$active_user";
 		$result = $conne->query($sql);
 		if ($result->num_rows > 0){
 			$row = fetch_assoc();
