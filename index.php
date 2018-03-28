@@ -451,7 +451,7 @@
 
 	function statements($details,$phone, $active_user, $conne){
 		//Fetch email address of user
-		$sql = "SELECT * FROM subscribers WHERE phone_Number = '$phone'";
+/*		$sql = "SELECT * FROM subscribers WHERE phone_Number = '$phone'";
 
 		$result = $conne->query($sql);
 		if(!$result){
@@ -463,7 +463,7 @@
         	$row=mysqli_fetch_array($result);
         	$to = $row['email'];
         }
-		
+		*/
 		$sql = "SELECT * FROM $active_user ORDER BY id";
 		$result =$conne->query($sql);
 		if(!$result)
