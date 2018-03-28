@@ -144,9 +144,9 @@
 	function register($details,$phone, $conne, $isSwahili){      
 		if (count($details)==1){   
 			if($isSwahili == 1)
-				$ussd_text="CON \n EKEZA MAJINA:";  
+				$ussd_text="CON \n EKEZA MAJINA YAKO:";  
 			else 
-				$ussd_text="CON \n ENTER NAMES:";
+				$ussd_text="CON \n ENTER YOUR NAMES:";
 			ussd_proceed($ussd_text);
  
 		} 
@@ -165,18 +165,15 @@
 				$ussd_text="CON ENTER TYPE OF BUSINESS:\n";  
 			ussd_proceed($ussd_text);  
 		}
-		else if(count($details) == 7){  
+		else if(count($details) == 4){  
 			$name=$details[1];			
 			$id_number=$details[2];
 			$business_type=$details[3];    
 			
 
 			//Validate and sanitize
-			if(!filter_var($fname, FILTER_SANITIZE_STRING) === TRUE){
-				$fname = NULL;
-			}
-		  	if(!filter_var($sname, FILTER_SANITIZE_STRING) === TRUE){
-				$sname = NULL;
+			if(!filter_var($name, FILTER_SANITIZE_STRING) === TRUE){
+				$name = NULL;
 			}
 			if(!filter_var($id_number, FILTER_VALIDATE_INT) === TRUE){
 				$id_number = NULL;
@@ -184,19 +181,13 @@
 			if(!filter_var($business_type, FILTER_SANITIZE_STRING) === TRUE){
 				$business_type = NULL;
 			}
-			if(!filter_var($county, FILTER_SANITIZE_STRING) === TRUE){
-				$county = NULL;
-			}
-			if(!filter_var($email, FILTER_SANITIZE_EMAIL) === TRUE){
-				$county = NULL;
-			}
 
 			//============   Tablename    ===================
 			$username = "lj".$phone;
 
 			//=================Write into database all the details=========================== 
 			$sql = "INSERT INTO subscribers (first_Name, last_Name, phone_Number, id_Number, email, business_Type, county, username, registration_Platform) 
-					VALUES ('$fname', '$sname', '$phone', '$id_number', '$email', '$business_type', '$county', '$username', 'MOBILE')";
+					VALUES ('$name', '$sname', '$phone', '$id_number', '$email', '$business_type', '$county', '$username', 'MOBILE')";
 			if($conne->query($sql) == TRUE){
 				if ($business_type == 'kiosk'){
 					create_table_kiosk($phone, $conne);
@@ -206,11 +197,11 @@
 				}
 				
 				if($isSwahili == 1){
-					$message = "Asante $fname kwa kuchagua Leja.\nWewe ni mwanachama mpya wetu.";
-					$sms_message = "Mpenzi $fname, \nTumefurahia kuwa nawe hapa.\nUnaweza kupata huduma zetu kwa kubonyeza *384*567#\nPata habari zaidi kutuhusu kwa kwenda kwa mtandao Visit https://pundojnr.github.io/leja_USIU\n Leja Team!";
+					$message = "Asante $name kwa kuchagua Leja.\nWewe ni mwanachama mpya wetu.";
+					$sms_message = "Mpenzi $name, \nTumefurahia kuwa nawe hapa.\nUnaweza kupata huduma zetu kwa kubonyeza *384*567#\nPata habari zaidi kutuhusu kwa kwenda kwa mtandao Visit https://pundojnr.github.io/leja_USIU\n Leja Team!";
 				}else{
-					$message = "Thank you $fname for choosing Leja.\nYou are our new member.";
-					$sms_message = "Dear $fname, \nWe are excited to have you on the App!\nAccess our service through *384*567# for delightful services.\nHappy sales! Leja Team.";
+					$message = "Thank you $name for choosing Leja.\nYou are our new member.";
+					$sms_message = "Dear $name, \nWe are excited to have you on the App!\nAccess our service through *384*567# for delightful services.\nHappy sales! Leja Team.";
 				}
 				sendSMS($phone, $sms_message);
 
