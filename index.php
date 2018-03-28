@@ -118,12 +118,12 @@
 		}
 
 	function displaymenu(){  
-		$ussd_text="CON \n1: Update Purchases\n2: Update Sales\n3: Profits and Losses \n4: Loans \n5: Statements \n 6: Help \n00: Exit";  
+		$ussd_text="CON \n1: PURCHASES\n2: SALES\n3: PROFITS & LOSSES \n4: LOANS \n5: STATEMENTS \n 6: HELP \n00: EXIT";  
 		ussd_proceed($ussd_text);  
 	}
 
 	function displayNewMemberMenu(){
-		$ussd_text = "CON \nWe are happy to see you here.\n1. Create new order \n00. Exit";
+		$ussd_text = "CON \nWE ARE HAPPY TO SEE YOU HERE.\n1. FIRST PURCHASE \n00. EXIT";
 		ussd_proceed($ussd_text);
 	}
 
