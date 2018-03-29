@@ -1,5 +1,4 @@
 <?php
-    // Try using POST with online NGROK and sandbox
 
 	//NGROK
 	$user_phonenumber = $_POST['phoneNumber'];
@@ -558,11 +557,11 @@
 		sendSMS($phone, $clean_message);
 
 		if($retval == TRUE){
-			$ussd_text = "END We have sent you an SMS with your statement and another copy to your email.";
+			$ussd_text = "END We have sent an SMS with your statement.";
 			ussd_proceed($ussd_text);
 		}else{
 			$ussd_text = "END Ooops!<br>
-							We encountered an error while fetching your statements. <br>Kindly contact the administrator.
+							We encountered an error while fetching your statements. <br>Kindly try again later.
 						";
 			ussd_proceed($ussd_text);
 		}
