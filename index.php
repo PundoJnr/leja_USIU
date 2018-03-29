@@ -189,6 +189,8 @@
 			if($conne->query($sql) == TRUE){
 				if ($business_type == 'kiosk'){
 					create_table_kiosk($phone, $conne);
+				}else if($business_type == 'mama mboga'){
+					create_table_mamamboga($phone, $conne);
 				}
 				else{
 					create_table($phone, $conne);
@@ -209,6 +211,12 @@
 				echo "error: ".$sql ."\n" .$conne->error;
 			}
 		}  
+	}
+	function create_table_mamamboga($phone, $conne){
+		$tableName = "lj" .$phone;
+		$sql "CREATE TABLE $tableName (
+			/*table contents*/
+			)"
 	}
 
 	function create_table_kiosk($phone, $conne){
@@ -328,6 +336,7 @@
 		    }
 	    }  
 	}
+	
 
     function update_purchases($details,$phone, $active_user, $conne){
 	    if (count($details)==1){ 
