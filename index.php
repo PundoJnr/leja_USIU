@@ -78,7 +78,8 @@
 						ussd_proceed($ussd_text);
 				    	break; 
 				}  //End switch
-		    }  
+			}  
+			
 		}
 		else{
 		  	//Registration menu
@@ -298,14 +299,14 @@
 	    }  
 	    else if (count($details)==2){  
 			if($isSwahili == 1)
-		   		$ussd_text="CON \n Matumizi ya ziada kwa bidhaa (kwa mfano usafirishaji)";  
+		   		$ussd_text="CON \n Thamani ya maziwa uliyouza leo";  
 			else 
 		    	$ussd_text="CON \nMilk value sold today?";  
 			ussd_proceed($ussd_text);  
 	    }   
 	    else if (count($details)==3){  
 			if($isSwahili == 1)
-		   		$ussd_text="CON \n Matumizi ya ziada kwa bidhaa (kwa mfano usafirishaji)";  
+		   		$ussd_text="CON \n Thamani ya mayai uliyouza leo";  
 			else 
 		    	$ussd_text="CON \nEggs value sold today?";  
 			ussd_proceed($ussd_text);  
