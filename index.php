@@ -45,6 +45,7 @@
 	if ($result=mysqli_query($conn,$query)){
 		$row = $result->fetch_assoc();
 		if(mysqli_num_rows($result) > 0){
+			$isSwahili=1;
 			//View my account menu			
 			if ($level==0){
 				displaymenu($isSwahili);
