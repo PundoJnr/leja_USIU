@@ -652,6 +652,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				$ussd_text = "CON \n How many times should a business person use Leja";
 				ussd_proceed($ussd_text);
 		}
+		else if(count($details)==4){
+			
+		}
 
 		
 	}
