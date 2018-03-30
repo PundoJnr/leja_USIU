@@ -53,7 +53,7 @@
 			    switch ($ussdString_explode[0]) {  
 					case 1: //Update stock 
 						if($row['business_Type'] == 'Kiosk'){
-							update_purchases_kiosk($ussdString_explode,$phonenumber, $username, $conn);
+							update_purchases_kiosk($ussdString_explode,$phonenumber, $username, $conn, $isSwahili);
 						}else
 				    		update_purchases($ussdString_explode,$phonenumber, $username, $conn);
 				    	break;  
@@ -211,7 +211,7 @@
 				
 				if($isSwahili == 1){
 					$message = "Asante $name kwa kuchagua Leja.\nWewe ni mwanachama mpya wetu.";
-					$sms_message = "Mpenzi $name, \nTumefurahia kuwa nawe hapa.\nUnaweza kupata huduma zetu kwa kubonyeza *384*567#\nPata habari zaidi kutuhusu kwa kwenda kwa mtandao Visit https://pundojnr.github.io/leja_USIU\n Leja Team!";
+					$sms_message = "Mpenzi $name, \nTumefurahia kuwa nawe hapa.\nUnaweza kupata huduma zetu kwa kubonyeza *384*567#\nPata habari zaidi kutuhusu kwa kwenda kwa mtandao tembelea https://pundojnr.github.io/leja_USIU\n Timu ya Leja!";
 				}else{
 					$message = "Thank you $name for choosing Leja.\nYou are our new member.";
 					$sms_message = "Dear $name, \nWe are excited to have you on the App!\nAccess our service through *384*567# for delightful services.\nHappy sales! Leja Team.";
@@ -296,7 +296,7 @@
 
 	}
 	
-	function update_purchases_kiosk($details,$phone, $active_user, $conne){		
+	function update_purchases_kiosk($details,$phone, $active_user, $conne, $isSwahili){		
 	    if (count($details)==1){ 
 			if($isSwahili == 1)
 		    	$ussd_text="CON \n Ingiza thamani ya mikate uliyouza leo: ";  
