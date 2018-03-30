@@ -382,7 +382,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		ussd_proceed($ussd_text);
 	}else if (count($details)==2){
 		if($isSwahili == 1)
-			$ussd_text = "";
+			$ussd_text = "CON \n Thamani ya nyanya uliouza leo: ";
+		else
+			$ussd_text = "CON \n Value of tomatoes sold today: ";
 	}
 
 }
