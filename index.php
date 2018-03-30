@@ -349,6 +349,9 @@
 	    }  
 	}
 	
+function update_purchases_mamamboga($details,$phone,$active_user,$conne){
+	if (count )
+}
 
     function update_purchases($details,$phone, $active_user, $conne){
 	    if (count($details)==1){ 
