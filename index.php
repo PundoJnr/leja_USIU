@@ -643,7 +643,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			case 1:
 				$ussd_text = "END \n We carter for different kinds of small and medium businesses such as kiosk,hotel,mamamboga and movie";
 			case 2:
-				
+				$ussd_text = "END \n In order to get loans you must have used Leja consistently for at least 6 months";
+			case 3:
+				$ussd_text = "END \n A business person is allowed to use Leja as many times as possible but adviced for only once a day. That is the evening when balancing the books for the day";
 		}
 	}
 ?>
