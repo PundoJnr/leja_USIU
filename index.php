@@ -129,8 +129,8 @@
 	function displaymenu($isSwahili){  
 		if ($isSwahili == 1){
 			$ussd_text = "CON \n1:UNUNUZI \n2: MAUZO\n3: FAIDA NA KUPOTEZA\n4: MIKOPO\n5: TAARIFA\n6: MSAADA\n00: TOKA";
-		}
-		$ussd_text="CON \n1: PURCHASES\n2: SALES\n3: PROFITS & LOSSES \n4: LOANS \n5: STATEMENTS \n 6: HELP \n00: EXIT";  
+		}else
+			$ussd_text="CON \n1: PURCHASES\n2: SALES\n3: PROFITS & LOSSES \n4: LOANS \n5: STATEMENTS \n 6: HELP \n00: EXIT";  
 		ussd_proceed($ussd_text);  
 	}
 
