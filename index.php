@@ -143,12 +143,12 @@
 		$sql = "SELECT Name, id_Number, business_Type, Swahili FROM subscribers WHERE username = '$active_user";
 		$result = $conne->query($sql);
 		if ($result->num_rows > 0){
-			$row = fetch_assoc();
+			$row = fetch_assoc(); 
 			$ussd_text = "END <br>Account Details<br>";
 			$ussd_text .= $row["Name"]."<br>";
 			$ussd_text .= "Id Number: ".$row["id_Number"]."<br>";
 			$ussd_text .= "Business Type: ".$row["business_Type"]."<br>";
-			$ussd_text .= "Language: " .$row["Swahili"]. "<br>";
+			
 			ussd_proceed($ussd_text);
 		}
 	}
@@ -194,6 +194,7 @@
 				$business_type = NULL;
 			}
 
+
 			//============   Tablename    ===================
 			$username = "lj".$phone;
 
@@ -214,6 +215,9 @@
 				}else{
 					create_table($phone, $conne);
 				}
+
+				$sql = "SELECT * FROM subscribers where username = '$active_user'";
+				$result = $conn->query(sql);
 				
 				if($isSwahili == 1){
 					$message = "Asante $name kwa kuchagua Leja.\nWewe ni mwanachama mpya wetu.";
