@@ -355,6 +355,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ussd_text = "CON \n Thamani ya mboga ulizouza leo: ";
 		else
 			$ussd_text = "CON \n Value of vegetables sold today: ";
+		ussd_proceed($ussd_text);
 	}
 }
 
