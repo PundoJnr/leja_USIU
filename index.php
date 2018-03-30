@@ -193,7 +193,7 @@
 				}else if($business_type == 'mama mboga'){
 					create_table_mamamboga($phone, $conne);
 				}else if($business_type == 'hotel'){
-					create_table_hotel($phone, $conne)
+					create_table_hotel($phone, $conne);
 				}else if($business_type == 'mtumba'){
 					create_table_mtumba($phone, $conne);
 				}else if($business_type == 'movie'){
