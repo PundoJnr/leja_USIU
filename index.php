@@ -312,6 +312,9 @@
 			ussd_proceed($ussd_text);  
 	    }else if (count($details)==4){
 			if($isSwahili == 1)
+				$ussd_text="CON \n Thamani ya sukari uliyouza leo";
+			else
+				$ussd_text="CON \n Sugar value sold today";
 		}  
 
 	    else if(count($details) == 4){  
