@@ -638,19 +638,21 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				$ussd_text ="CON \nType of businesses that we carter for";
 			ussd_proceed($ussd_text);
 		}
-		if(count($details)==2){
+		else if(count($details)==2){
 			if($isSwahili == 1)
 				$ussd_text ="CON \n Jinsi ya kupata mikopo";
 			else
 				$ussd_text = "CON \n How to get loans";
 			ussd_proceed($ussd_text);
 		}
-		if(count($details)==3){
+		else if(count($details)==3){
 			if($isSwahili == 1)
-				$ussd_text = "CON \n Mara ngapi mwanabiashara anapaswa kuitumia";
+				$ussd_text = "CON \n Mara ngapi mwanabiashara anapaswa kuitumia Leja";
 			else
-				$ussd_text = "CON \n How many times should a business person use it";
+				$ussd_text = "CON \n How many times should a business person use Leja";
+				ussd_proceed($ussd_text);
 		}
+
 		
 	}
 ?>
