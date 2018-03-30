@@ -645,6 +645,10 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				$ussd_text = "CON \n How to get loans";
 			ussd_proceed($ussd_text);
 		}
+		if(count($details)==3){
+			if($isSwahili == 1)
+				$ussd_text = "CON \n ";
+		}
 		
 	}
 ?>
