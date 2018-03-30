@@ -655,6 +655,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			case 0:
 			die();
 			break;
+			default:
+			 $ussd_text ="INVALID OPTION";
+			 ussd_proceed($ussd_text);
 
 		}
 	}
