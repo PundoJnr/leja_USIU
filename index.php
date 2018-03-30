@@ -636,8 +636,12 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				$ussd_text = "CON \n Aina ya biashara tunayosaidia";
 			else
 				$ussd_text ="CON \nType of businesses that we carter for";
+			ussd_proceed($ussd_text);
 		}
-		if(count(details)==2)
-		ussd_proceed($ussd_text);
+		if(count($details)==2){
+			if($isSwahili == 1)
+				$ussd_text ="CON \n Jinsi ya kupata mikopo";
+		}
+		
 	}
 ?>
