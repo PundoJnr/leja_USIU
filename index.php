@@ -148,7 +148,7 @@
 			$ussd_text .= $row["Name"]."<br>";
 			$ussd_text .= "Id Number: ".$row["id_Number"]."<br>";
 			$ussd_text .= "Business Type: ".$row["business_Type"]."<br>";
-			$ussd_text .= "Language: " .$row["Language"]. "<br>";
+			$ussd_text .= "Language: " .$row["Swahili"]. "<br>";
 			ussd_proceed($ussd_text);
 		}
 	}
