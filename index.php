@@ -632,7 +632,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 
 	function getHelp($details,$phone, $active_user, $conne, $isSwahili) {
 
-		$ussd_text = "CON \n 1:Type of businesses that we carter for. \n 2:How to get loans. 3:How many times should a business person use Leja in a day."
+		$ussd_text = "CON \n 1:Type of businesses that we carter for. \n 2:How to get loans. 3:How many times should a business person use Leja in a day.";
 		ussd_proceed($ussd_text);	
 	}
 ?>
