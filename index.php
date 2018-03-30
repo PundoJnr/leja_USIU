@@ -195,6 +195,8 @@
 					create_table_hotel($phone, $conne)
 				}else if($business_type == 'mtumba'){
 					create_table_mtumba($phone, $conne);
+				}else if($business_type == 'movie'){
+					create_table_movie($phone, $conne);
 				}else{
 					create_table($phone, $conne);
 				}
