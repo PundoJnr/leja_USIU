@@ -218,12 +218,12 @@
 			}
 		}  
 	}
-	function create_table_mamamboga($phone, $conne){
+/*	function create_table_mamamboga($phone, $conne){
 		$tableName = "lj" .$phone;
 		$sql "CREATE TABLE $tableName (
-			/*table contents*/
+			/*table contents
 			)"
-	}
+	}*/
 
 	function create_table_kiosk($phone, $conne){
 		$tableName = "lj".$phone;
