@@ -631,7 +631,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	}
 
 	function getHelp($details,$phone, $active_user, $conne, $isSwahili) {
-		if(count($details)==1){
+
+		$ussd_text = "CON \n 1:Type of businesses that we carter for. \n 2:How to get loans. "
+	/*	if(count($details)==1){
 			if($isSwahili == 1)
 				$ussd_text = "CON \n Aina ya biashara tunayosaidia";
 			else
@@ -656,7 +658,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$help1=$details[1];
 			$help2=$details[2];
 			$help3=$details[3];
-		}
+		}*/
 
 		
 	}
