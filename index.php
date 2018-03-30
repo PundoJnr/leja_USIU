@@ -191,8 +191,9 @@
 					create_table_kiosk($phone, $conne);
 				}else if($business_type == 'mama mboga'){
 					create_table_mamamboga($phone, $conne);
-				}
-				else{
+				}else if($business_type == 'hotel'){
+					create_table_hotel($phone, $conne)
+				}else{
 					create_table($phone, $conne);
 				}
 				
