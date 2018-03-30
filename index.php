@@ -398,8 +398,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ussd_text = "CON \n Value of cereals sold today: ";
 	} else if (count($details)==5){
 		if ($isSwahili == 1)
-			$ussd_text = "CON \n Thamani ya dania matunda uliyouza leo: ";
+			$ussd_text = "CON \n Thamani ya matunda uliyouza leo: ";
 		else
+			$ussd_text = "CON \n Value of fruits sold today: ";
 	}
 
 }
