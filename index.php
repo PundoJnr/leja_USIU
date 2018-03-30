@@ -75,7 +75,7 @@
 				    case 6:
 				    	//MyAccount
 				        //display_my_account_menu($ussdString_explode,$phonenumber, $username, $conn);
-						getHelp();
+						getHelp($details, $phone, $conne, $isSwahili);
 				    	break;
 				    case 0:
 				    	die();
@@ -630,7 +630,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		}
 	}
 
-	function getHelp($details,$phone, $conne, $isSwahili) {
+	function getHelp($details, $phone, $conne, $isSwahili) {
 		if(count($details)==1){
 			if($isSwahili == 1)
 				$ussd_text = "CON \n Aina ya biashara tunayosaidia";
