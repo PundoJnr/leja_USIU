@@ -47,7 +47,7 @@
 		if(mysqli_num_rows($result) > 0){
 			//View my account menu			
 			if ($level==0){
-				displaymenu();
+				displaymenu($isSwahili);
 			}    
 		    if ($level>0){  
 			    switch ($ussdString_explode[0]) {  
@@ -123,6 +123,8 @@
 		    $ussd_text = "Query failed";
 			ussd_proceed($ussd_text);
 		}
+
+		$sql = 
 
 	function displaymenu($isSwahili){  
 		if ($isSwahili == 1){
