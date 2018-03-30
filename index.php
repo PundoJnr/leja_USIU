@@ -124,7 +124,7 @@
 			ussd_proceed($ussd_text);
 		}
 
-		$sql = 
+
 
 	function displaymenu($isSwahili){  
 		if ($isSwahili == 1){
