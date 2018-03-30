@@ -197,8 +197,8 @@
 			$username = "lj".$phone;
 
 			//=================Write into database all the details=========================== 
-			$sql = "INSERT INTO subscribers (Name, phone_Number, id_Number, business_Type, username, registration_Platform) 
-					VALUES ('$name', '$phone', '$id_number', '$business_type' , '$username', 'MOBILE')";
+			$sql = "INSERT INTO subscribers (Name, phone_Number, id_Number, business_Type, username, registration_Platform, Swahili) 
+					VALUES ('$name', '$phone', '$id_number', '$business_type' , '$username', 'MOBILE', '$isSwahili')";
 			if($conne->query($sql) == TRUE){
 				if ($business_type == 'kiosk'){
 					create_table_kiosk($phone, $conne);
