@@ -323,6 +323,7 @@
 				$ussd_text="CON \n Thamani ya sukari uliyouza leo";
 			else
 				$ussd_text="CON \n Sugar value sold today";
+			ussd_proceed($ussd_text);
 		}  
 
 	    else if(count($details) == 5){  
@@ -632,10 +633,11 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	function getHelp() {
 		if(count($details)==1){
 			if($isSwahili == 1)
-				$ussd_text = "Aina ya biashara tunayosaidia";
+				$ussd_text = "CON \n Aina ya biashara tunayosaidia";
 			else
-				$ussd_text ="Type of businesses that we carter for";
+				$ussd_text ="CON \nType of businesses that we carter for";
 		}
+		if(count(details)==2)
 		ussd_proceed($ussd_text);
 	}
 ?>
