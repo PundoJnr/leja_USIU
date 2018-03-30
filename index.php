@@ -638,5 +638,12 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	if ($level==6){
 		getHelp();
 	}
-	
+	if ($level > 6){
+		switch($ussdString_explode[6]){
+			case 1:
+				$ussd_text = "END \n We carter for different kinds of small and medium businesses such as kiosk,hotel,mamamboga and movie";
+			case 2:
+				
+		}
+	}
 ?>
