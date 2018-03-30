@@ -52,7 +52,7 @@
 		    if ($level>0){  
 			    switch ($ussdString_explode[0]) {  
 					case 1: //Update stock 
-						if($row['business_Type'] == 'kiosk'){
+						if($row['business_Type'] == 'Kiosk'){
 							update_purchases_kiosk($ussdString_explode,$phonenumber, $username, $conn);
 						}else
 				    		update_purchases($ussdString_explode,$phonenumber, $username, $conn);
