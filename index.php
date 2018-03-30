@@ -649,7 +649,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			if($isSwahili == 1)
 				$ussd_text = "CON \n Mara ngapi mwanabiashara anapaswa kuitumia";
 			else
-				
+				$ussd_text = "CON \n How many times should a business person use it";
 		}
 		
 	}
