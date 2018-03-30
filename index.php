@@ -647,7 +647,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		}
 		if(count($details)==3){
 			if($isSwahili == 1)
-				$ussd_text = "CON \n ";
+				$ussd_text = "CON \n Mara ngapi mwanabiashara anapaswa kuitumia";
+			else
+				
 		}
 		
 	}
