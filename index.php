@@ -140,7 +140,7 @@
 	}
 
 	function display_my_account_menu($details,$phone, $active_user, $conne){
-		$sql = "SELECT Name, id_Number, business_Type FROM subscribers WHERE username = '$active_user";
+		$sql = "SELECT Name, id_Number, business_Type, Swahili FROM subscribers WHERE username = '$active_user";
 		$result = $conne->query($sql);
 		if ($result->num_rows > 0){
 			$row = fetch_assoc();
@@ -148,6 +148,7 @@
 			$ussd_text .= $row["Name"]."<br>";
 			$ussd_text .= "Id Number: ".$row["id_Number"]."<br>";
 			$ussd_text .= "Business Type: ".$row["business_Type"]."<br>";
+			$ussd_text .= "Language: " .$row["Language"]. "<br>";
 			ussd_proceed($ussd_text);
 		}
 	}
