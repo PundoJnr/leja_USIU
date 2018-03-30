@@ -386,7 +386,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		else
 			$ussd_text = "CON \n Value of tomatoes sold today: ";
 	}
-	else if (count(details)==3){
+	else if (count($details)==3){
 		if($isSwahili == 1)
 			$ussd_text = "CON \n Thamani ya vitungu ulivyouza leo: ";
 		else
@@ -396,7 +396,11 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ussd_text = "CON \n Thamani ya nafaka uliyouza leo: ";
 		else
 			$ussd_text = "CON \n Value of cereals sold today: ";
-	} else if
+	} else if (count($details)==5){
+		if ($isSwahili == 1)
+			$ussd_text = "CON \n Thamani ya dania matunda uliyouza leo: ";
+		else
+	}
 
 }
 
