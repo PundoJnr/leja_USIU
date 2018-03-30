@@ -353,6 +353,8 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	if (count($details)==1){
 		if($isSwahili == 1)
 			$ussd_text = "CON \n Thamani ya mboga ulizouza leo: ";
+		else
+			$ussd_text = "CON \n Value of vegetables sold today: ";
 	}
 }
 
