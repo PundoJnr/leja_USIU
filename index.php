@@ -310,7 +310,9 @@
 			else 
 		    	$ussd_text="CON \nEggs value sold today?";  
 			ussd_proceed($ussd_text);  
-	    }  
+	    }else if (count($details)==4){
+			if($isSwahili == 1)
+		}  
 
 	    else if(count($details) == 4){  
 		    $bread=$details[1];  
