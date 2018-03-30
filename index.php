@@ -317,10 +317,11 @@
 				$ussd_text="CON \n Sugar value sold today";
 		}  
 
-	    else if(count($details) == 4){  
+	    else if(count($details) == 5){  
 		    $bread=$details[1];  
 		    $milk=$details[2];
-		    $eggs=$details[3];
+			$eggs=$details[3];
+			$sugar=$details[4];
 
 
 		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
