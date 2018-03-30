@@ -638,5 +638,5 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	if ($level==6){
 		getHelp();
 	}
-}
+	
 ?>
