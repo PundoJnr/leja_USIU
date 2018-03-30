@@ -75,7 +75,7 @@
 				    case 6:
 				    	//MyAccount
 				        //display_my_account_menu($ussdString_explode,$phonenumber, $username, $conn);
-						getHelp($ussdString_explode,$phonenumber, $username, $conn, $isSwahili);
+						getHelp($ussdString_explode,$phonenumber, $username, $conn);
 				    	break;
 				    case 0:
 				    	die();
