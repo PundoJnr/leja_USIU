@@ -218,6 +218,10 @@
 
 				$sql = "SELECT * FROM subscribers where username = '$active_user'";
 				$result = $conn->query(sql);
+				if($results->num_rows > 1){
+					$row = fetch_assoc();
+					$isSwahili=$row['Swahili'];
+				}
 				
 				if($isSwahili == 1){
 					$message = "Asante $name kwa kuchagua Leja.\nWewe ni mwanachama mpya wetu.";
