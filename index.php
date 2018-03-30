@@ -350,7 +350,10 @@
 	}
 	
 function update_purchases_mamamboga($details,$phone,$active_user,$conne){
-	if (count )
+	if (count($details)==1){
+		if($isSwahili == 1)
+			$ussd_text = "CON \n Thamani ya mboga ulizouza leo: ";
+	}
 }
 
     function update_purchases($details,$phone, $active_user, $conne){
