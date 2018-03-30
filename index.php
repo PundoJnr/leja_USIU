@@ -645,7 +645,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		}
 	}
 
-	function getHelp($ussdString_explode[6]) {
+	function getHelp($ussdString_explode) {
 
 		$ussd_text = "CON \n 1:Type of businesses that we carter for. \n 2:How to get loans. 3:How many times should a business person use Leja in a day. 4:For more information visit <a href='leja.co.ke'>leja.co.ke</a>";
 		ussd_proceed($ussd_text);
