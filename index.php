@@ -125,6 +125,9 @@
 		}
 
 	function displaymenu(){  
+		if ($isSwahili == 1){
+			$ussd_text = "CON \n1:UNUNUZI \n2: MAUZO\n3: FAIDA NA KUPOTEZA"
+		}
 		$ussd_text="CON \n1: PURCHASES\n2: SALES\n3: PROFITS & LOSSES \n4: LOANS \n5: STATEMENTS \n 6: HELP \n00: EXIT";  
 		ussd_proceed($ussd_text);  
 	}
