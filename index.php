@@ -124,7 +124,7 @@
 			ussd_proceed($ussd_text);
 		}
 
-	function displaymenu(){  
+	function displaymenu($isSwahili){  
 		if ($isSwahili == 1){
 			$ussd_text = "CON \n1:UNUNUZI \n2: MAUZO\n3: FAIDA NA KUPOTEZA\n4: MIKOPO\n5: TAARIFA\n6: MSAADA\n00: TOKA";
 		}
