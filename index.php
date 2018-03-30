@@ -630,7 +630,10 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	}
 
 	function getHelp() {
-		$ussd_text="END \nVisit www.leja.co.ke to view FAQs";  
+		if(count($details)==1){
+			if($isSwahili == 1)
+				$ussd_text = "Aina ya biashara tunayo"
+		}
 		ussd_proceed($ussd_text);
 	}
 ?>
