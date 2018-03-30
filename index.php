@@ -654,6 +654,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		}
 		else if(count($details)==4){
 			$help1=$details[1];
+			$help2=$details[2];
 		}
 
 		
