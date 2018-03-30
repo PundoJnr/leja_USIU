@@ -632,7 +632,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	function getHelp() {
 		if(count($details)==1){
 			if($isSwahili == 1)
-				$ussd_text = "Aina ya biashara tunayo"
+				$ussd_text = "Aina ya biashara tunayosaidia"
+			else
+				u
 		}
 		ussd_proceed($ussd_text);
 	}
