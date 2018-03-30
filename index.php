@@ -630,7 +630,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		}
 	}
 
-	function getHelp() {
+	function getHelp($details,$phone, $conne, $isSwahili) {
 		if(count($details)==1){
 			if($isSwahili == 1)
 				$ussd_text = "CON \n Aina ya biashara tunayosaidia";
