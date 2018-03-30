@@ -641,6 +641,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		if(count($details)==2){
 			if($isSwahili == 1)
 				$ussd_text ="CON \n Jinsi ya kupata mikopo";
+			else
+				$ussd_text = "CON \n How to get loans";
+			ussd_proceed($ussd_text);
 		}
 		
 	}
