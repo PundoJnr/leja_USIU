@@ -404,6 +404,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ussd_text = "CON \n Thamani ya matunda uliyouza leo: ";
 		else
 			$ussd_text = "CON \n Value of fruits sold today: ";
+		ussd_proceed($ussd_text);
 	}
 
 }
