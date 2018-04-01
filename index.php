@@ -255,6 +255,10 @@
 			sales INT (100),
 			balance INT (100)
 			)";
+		if ($conne->query($sql) === TRUE) {
+		
+			$sql = "INSERT INTO $tableName (purchases, veg, tomatoes, onions, fruits, others, expenditure, sales, balance) VALUES ('0','0','0','0','0','0','0','0','0')";
+		}
 	}
 
 	function create_table_kiosk($phone, $conne){
