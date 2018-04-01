@@ -264,6 +264,8 @@
 		   }else{
 			   echo "error".$sql."\n" .$conne->error;
 		   }
+		}else{
+			echo"error creating table" .$conne->error;
 		}
 	}
 
