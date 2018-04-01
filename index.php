@@ -261,7 +261,9 @@
 			
 		   if($conne->query($sql)== TRUE){
 
-		   }else
+		   }else{
+			   echo "error".$sql."\n" .$conne->error;
+		   }
 		}
 	}
 
