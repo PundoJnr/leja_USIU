@@ -249,8 +249,12 @@
 			veges INT(30),
 			tomatoes INT (30),
 			onions INT (30),
-
-			)"
+			fruits INT(30),
+			others INT (30),
+			expenditure INT(100),
+			sales INT (100),
+			balance INT (100)
+			)";
 	}
 
 	function create_table_kiosk($phone, $conne){
