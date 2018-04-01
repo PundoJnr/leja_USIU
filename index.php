@@ -521,13 +521,20 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			    if($t_bal > 0){
 					if($isSwahili == 1)
 						$ussd_text="END \n Una POSA ya: $t_bal. uza bidhaa zaidi na ulipate faida.";
+					else
 			    		$ussd_text="END \nYou have a LOSS of: $t_bal. Sell more products and earn.";  
 		   			ussd_proceed($ussd_text);
 			    }elseif ($t_bal < 0){
-			    	$ussd_text="END \nYou have a PROFIT of: ".-1*$t_bal."Keep selling your goods and earn more";  
+					if($isSwahili == 1)
+						$ussd_text="END \n Una FAIDA ya .".-1*$t_bal. "uzaa bidhaa zaidi ili upate zaidi.";
+					else
+						$ussd_text="END \nYou have a PROFIT of: ".-1*$t_bal."Keep selling your goods and earn more";  
 		   			ussd_proceed($ussd_text);
 			    }else{
-			    	$ussd_text = "END \nYour profit and loss is balanced";
+					if($isSwahili == 1)
+						$ussd_text = "END \n Faida na hasara yako ni sawa";
+					else
+			    		$ussd_text = "END \nYour profit and loss is balanced";
 			    	ussd_proceed($ussd_text);
 			    }
 			} else {
