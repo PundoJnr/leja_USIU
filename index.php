@@ -469,8 +469,10 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				$ussd_text = "";
 			ussd_proceed($ussd_text);
 		}
-		else
-
+		else if (count($details)== 5){
+			
+		}
+			
 	}
 
     function update_purchases($details,$phone, $active_user, $conne){
