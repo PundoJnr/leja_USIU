@@ -246,6 +246,9 @@
 			_date TIMESTAMP,
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			purchases INT(30),
+			veges INT(30),
+			tomatoes INT (30),
+			onions INT (30),
 
 			)"
 	}
