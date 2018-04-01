@@ -501,7 +501,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				//Calculations
-			    $t_bal = $row["balance"] + $ + $ + $ + $ + $`;
+			    $t_bal = $row["balance"] + $ + $ + $ + $ + $;
 			} else {
 			    echo "0 results";
 			}			
