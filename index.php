@@ -249,6 +249,7 @@
 			veges INT(30),
 			tomatoes INT (30),
 			onions INT (30),
+			cereals INT(30),
 			fruits INT(30),
 			others INT (30),
 			expenditure INT(100),
@@ -257,7 +258,7 @@
 			)";
 		if ($conne->query($sql) === TRUE) {
 		
-			$sql = "INSERT INTO $tableName (purchases, veg, tomatoes, onions, fruits, others, expenditure, sales, balance) VALUES ('0','0','0','0','0','0','0','0','0')";
+			$sql = "INSERT INTO $tableName (purchases, veg, tomatoes, onions, cereals, fruits, others, expenditure, sales, balance) VALUES ('0','0','0','0','0','0','0','0','0','0')";
 			
 		   if($conne->query($sql)== TRUE){
 
@@ -448,7 +449,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$row = $result->fetch_assoc();
 			//Calculations
 			$t_bal = $row["balance"] + $veges + $tomatoes + $onions + $cereals + $fruits + $others;
-		} else {
+		} else {	
 			echo "0 results";
 		}
 }
