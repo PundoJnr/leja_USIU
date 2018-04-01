@@ -436,6 +436,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	}
 	else if(count($details) == 7){
 		$veges = $details[1];
+		$tomatoes = $details[2];
+		$onions = $details[3];
+		$cer
 	}
 
 }
