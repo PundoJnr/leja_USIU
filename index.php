@@ -442,7 +442,15 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		$fruits = $details[5];
 		$others = $details[6];
 	}
-
+	$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
+	$result = $conne->query($sql);
+	if ($result->num_rows > 0) {
+			$row = $result->fetch_assoc();
+			//Calculations
+			$t_bal = $row["balance"] + $veges + $tomatoes + $onions + $cereals + $fruits + $others;
+		} else {
+			echo "0 results";
+		}
 }
 
 	function update_purchases_hotel($details,$phone,$active_user,$conne){
