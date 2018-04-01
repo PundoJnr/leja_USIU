@@ -438,7 +438,8 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		$veges = $details[1];
 		$tomatoes = $details[2];
 		$onions = $details[3];
-		$cer
+		$cereals = $details[4];
+		$fruits = $details[5];
 	}
 
 }
