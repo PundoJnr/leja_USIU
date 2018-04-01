@@ -493,6 +493,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ = $details[1];
 			$ = $details[2];
 			$ = $details[3];
+			$ = $details[4];
 		}
 			
 	}
