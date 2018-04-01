@@ -434,6 +434,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ussd_text = "CON \n Value other goods sold in total: ";
 		ussd_proceed($ussd_text);
 	}
+	else if(count($details) == 7){
+		$veges = $details[1];
+	}
 
 }
 
@@ -470,7 +473,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			ussd_proceed($ussd_text);
 		}
 		else if (count($details)== 5){
-			
+
 		}
 			
 	}
