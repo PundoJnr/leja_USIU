@@ -437,6 +437,10 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 
 }
 
+	function update_purchases_hotel($details,$phone,$active_user,$conne){
+		
+	}
+
     function update_purchases($details,$phone, $active_user, $conne){
 	    if (count($details)==1){ 
 			if($isSwahili == 1)
