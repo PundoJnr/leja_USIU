@@ -258,6 +258,10 @@
 		if ($conne->query($sql) === TRUE) {
 		
 			$sql = "INSERT INTO $tableName (purchases, veg, tomatoes, onions, fruits, others, expenditure, sales, balance) VALUES ('0','0','0','0','0','0','0','0','0')";
+			
+		   if($conne->query($sql)== TRUE){
+
+		   }else
 		}
 	}
 
