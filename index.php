@@ -519,7 +519,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				//calculations
 			    $t_bal = $row["balance"];
 			    if($t_bal > 0){
-			    	$ussd_text="END \nYou have a LOSS of: $t_bal. Sell more products and earn.";  
+					if($isSwahili == 1)
+						$ussd_text="END \n Una POSA ya: $t_bal. uza bidhaa zaidi na ulipate faida.";
+			    		$ussd_text="END \nYou have a LOSS of: $t_bal. Sell more products and earn.";  
 		   			ussd_proceed($ussd_text);
 			    }elseif ($t_bal < 0){
 			    	$ussd_text="END \nYou have a PROFIT of: ".-1*$t_bal."Keep selling your goods and earn more";  
