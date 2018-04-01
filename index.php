@@ -441,8 +441,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		if (count($details)==1){
 			if ($isSwahili == 1)
 				$ussd_text ="";
-			
-		}
+			else
+				$ussd_text ="";
+		}else
 
 	}
 
