@@ -407,7 +407,9 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		ussd_proceed($ussd_text);
 	}else if (count($details)==6){
 		if($isSwahili == 1)
-			$ussd_text = "CON \n Thamani ya bidhaa zingine kwa jumla: ";
+			$ussd_text = "CON \n Thamani ya bidhaa zingine ulizouza kwa jumla: ";
+		else
+			$ussd_text = "CON \n Value other goods sold in total: ";
 	}
 
 }
