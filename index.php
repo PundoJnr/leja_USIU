@@ -492,6 +492,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		else if (count($details)==6){
 			$ = $details[1];
 			$ = $details[2];
+			$ = $details[3];
 		}
 			
 	}
