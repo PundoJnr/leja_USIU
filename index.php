@@ -495,7 +495,16 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ = $details[3];
 			$ = $details[4];
 		}
-			
+
+		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
+		$result = $conne->query($sql);
+		if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				//Calculations
+			    $t_bal = $row["balance"] + $ + $ + $ + $ + $`;
+			} else {
+			    echo "0 results";
+			}			
 	}
 
     function update_purchases($details,$phone, $active_user, $conne){
