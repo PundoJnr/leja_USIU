@@ -410,6 +410,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$ussd_text = "CON \n Thamani ya bidhaa zingine ulizouza kwa jumla: ";
 		else
 			$ussd_text = "CON \n Value other goods sold in total: ";
+		ussd_proceed($ussd_text);
 	}
 
 }
