@@ -451,7 +451,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$t_bal = $row["balance"] + $veges + $tomatoes + $onions + $cereals + $fruits + $others;
 		} else {	
 			echo "0 results";
-		$sql = ""
+		$sql = "INSERT INTO $active_user ("
 }
 
 	function update_purchases_hotel($details,$phone,$active_user,$conne){
