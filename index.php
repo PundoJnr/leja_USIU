@@ -376,7 +376,7 @@
 		if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				//Calculations
-			    $t_bal = $row["balance"] + $bread + $milk + $eggs;
+			    $t_bal = $row["balance"] + $bread + $milk + $eggs + $sugar;
 			} else {
 			    echo "0 results";
 			}
