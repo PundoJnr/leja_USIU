@@ -381,7 +381,7 @@
 			    echo "0 results";
 			}
 	      
-		    $sql = "INSERT INTO $active_user (bread,milk, eggs,balance) VALUES ('$bread','$milk', '$eggs','$t_bal')"; 
+		    $sql = "INSERT INTO $active_user (bread,milk, eggs,balance) VALUES ('$bread','$milk', '$eggs','$sugar','$t_bal')"; 
 
 		    if($conne->query($sql) == TRUE){
 				if($isSwahili == 1)
