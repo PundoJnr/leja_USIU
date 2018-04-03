@@ -451,8 +451,19 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$t_bal = $row["balance"] + $veges + $tomatoes + $onions + $cereals + $fruits + $others;
 		} else {	
 			echo "0 results";
-		$sql = "INSERT INTO $active_user (veges,tomatoes,onions,cereals,fruits,others,balance) VALUES ('$veges','$onions','$cereals','')"
-}
+	 $sql = "INSERT INTO $active_user (veges,tomatoes,onions,cereals,fruits,others,balance) VALUES ('$veges','$onions','$cereals','$fruits','$others','$balance')";
+		
+		if($conne->query($sql) == TRUE){
+			if($isSwahili == 1)
+				$ussd_text="END \n Umeandika manunuzi kwa mafanikio";  
+			else 
+					$ussd_text="END \nYou have successfully recorded your purchases";  
+			ussd_proceed($ussd_text); 
+		}
+		else{
+			echo "error: ".$sql ."\n" .$conne->error;
+		}
+	}
 
 	function update_purchases_hotel($details,$phone,$active_user,$conne){
 		if (count($details)==1){
