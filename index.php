@@ -65,7 +65,9 @@
 				    	profit_losses($ussdString_explode,$phonenumber, $username, $conn);				   
 				    	break; 
 				    case 4: 
-				    	//Loans 
+						//Loans 
+						if($isSwahili == 1)
+							$ussd_text = "END \n HUNA USAHIHI WA MIKOPO YA LEJA KWA WAKATI HUU. LAZIMA UTUMIE LEJA KWA ZAIDI YA MIEZI SITA\nASANTE."
 				   		$ussd_text="END \n YOU ARE NOT LEGIBLE FOR LEJA LOANS AT THE MOMENT. YOU MUST HAVE USED LEJA FOR MORE THAN 6 MONTHS\nTHANK YOU.";  
 			   			ussd_proceed($ussd_text);
 				    	break;
