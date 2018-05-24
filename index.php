@@ -45,7 +45,7 @@
 	if ($result=mysqli_query($conn,$query)){
 		$row = $result->fetch_assoc();
 		if(mysqli_num_rows($result) > 0){
-			$isSwahili = $row['Swahili'];
+			$isSwahili = $row['swahili'];
 			//View my account menu			
 			if ($level==0){
 				displaymenu($isSwahili);
@@ -56,7 +56,7 @@
 						if($row['business_Type'] == 'Kiosk'){
 							update_purchases_kiosk($ussdString_explode,$phonenumber, $username, $conn, $isSwahili);
 						}else
-				    		update_purchases($ussdString_explode,$phonenumber, $username, $conn);
+				    		update_purchases($ussdString_explode, $phonenumber, $username, $conn, $isSwahili);
 				    	break;  
 				    case 2:  //Update sales
 					    update_sales($ussdString_explode,$phonenumber, $username, $conn);  
@@ -336,6 +336,60 @@
 		ussd_proceed($ussd_text); 
 
 	}
+
+	
+    function update_purchases($details,$phone, $active_user, $conne, $isSwahili){
+	    if (count($details)==1){ 
+			if($isSwahili == 1)
+		    	$ussd_text="CON \n Ingiza thamani ya bidhaa ulizonunulia leo: ";  
+			else 
+		    	$ussd_text="CON \nEnter value of the goods you have bought today: ";  
+			ussd_proceed($ussd_text);  
+	    }  
+	    else if (count($details)==2){  
+			if($isSwahili == 1)
+		   		$ussd_text="CON \n Matumizi ya ziada kwa bidhaa (kwa mfano usafirishaji)";  
+			else 
+		    	$ussd_text="CON \nExtra expenditure on goods(eg. transportation)";  
+			ussd_proceed($ussd_text);  
+	    }  
+
+	    else if(count($details) == 3){  
+		    $purchases=$details[1];  
+		    $expenditure=$details[2];
+
+		    //Validate data
+		    if(filter_var($purchases, FILTER_VALIDATE_INT) === FALSE){
+		    	$purchases = NULL;
+		    }
+		    if(filter_var($expenditure, FILTER_VALIDATE_INT) === FALSE){
+		    	$expenditure = NULL;
+		    } 
+
+		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
+		$result = $conne->query($sql);
+		if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				//Calculations
+			    $t_bal = $row["balance"] + $purchases + $expenditure;
+			} else {
+			    echo "0 results";
+			}
+	      
+		    $sql = "INSERT INTO $active_user (purchases,expenditure,balance) VALUES ('$purchases','$expenditure','$t_bal')"; 
+
+		    if($conne->query($sql) == TRUE){
+				if($isSwahili == 1)
+		        	$ussd_text="END \n Umeandika manunuzi kwa mafanikio";  
+				else 
+		       		 $ussd_text="END \nYou have successfully recorded your purchases";  
+				ussd_proceed($ussd_text); 
+		    }
+		    else{
+		        echo "error: ".$sql ."\n" .$conne->error;
+		    }
+	    }  
+	}
 	
 	function update_purchases_kiosk($details,$phone, $active_user, $conne, $isSwahili){		
 	    if (count($details)==1){ 
@@ -540,58 +594,6 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		}
 	
 
-    function update_purchases($details,$phone, $active_user, $conne){
-	    if (count($details)==1){ 
-			if($isSwahili == 1)
-		    	$ussd_text="CON \n Ingiza thamani ya bidhaa ulizonunulia leo: ";  
-			else 
-		    	$ussd_text="CON \nEnter value of the goods you have bought today: ";  
-			ussd_proceed($ussd_text);  
-	    }  
-	    else if (count($details)==2){  
-			if($isSwahili == 1)
-		   		$ussd_text="CON \n Matumizi ya ziada kwa bidhaa (kwa mfano usafirishaji)";  
-			else 
-		    	$ussd_text="CON \nExtra expenditure on goods(eg. transportation)";  
-			ussd_proceed($ussd_text);  
-	    }  
-
-	    else if(count($details) == 3){  
-		    $purchases=$details[1];  
-		    $expenditure=$details[2];
-
-		    //Validate data
-		    if(filter_var($purchases, FILTER_VALIDATE_INT) === FALSE){
-		    	$purchases = NULL;
-		    }
-		    if(filter_var($expenditure, FILTER_VALIDATE_INT) === FALSE){
-		    	$expenditure = NULL;
-		    } 
-
-		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
-		$result = $conne->query($sql);
-		if ($result->num_rows > 0) {
-				$row = $result->fetch_assoc();
-				//Calculations
-			    $t_bal = $row["balance"] + $purchases + $expenditure;
-			} else {
-			    echo "0 results";
-			}
-	      
-		    $sql = "INSERT INTO $active_user (purchases,expenditure,balance) VALUES ('$purchases','$expenditure','$t_bal')"; 
-
-		    if($conne->query($sql) == TRUE){
-				if($isSwahili == 1)
-		        	$ussd_text="END \n Umeandika manunuzi kwa mafanikio";  
-				else 
-		       		 $ussd_text="END \nYou have successfully recorded your purchases";  
-				ussd_proceed($ussd_text); 
-		    }
-		    else{
-		        echo "error: ".$sql ."\n" .$conne->error;
-		    }
-	    }  
-	}
 	
 
 	function update_sales($details,$phone, $active_user, $conne){
