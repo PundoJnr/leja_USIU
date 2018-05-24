@@ -487,23 +487,29 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			else
 				$ussd_text = "Cost of Greens sold";
 			ussd_proceed($ussd_text);
-		}else if (count($details) == 3){
+		}else if (count($details)==4){
+				if($isSwahili == 1)
+					$ussd_text = "";
+				else
+					$ussd_text = "Cost of Rice sold";
+				ussd_proceed($ussd_text);
+		}else if (count($details) == 4){
 			if ($isSwahili == 1)
 				$ussd_text = "";
 			else
 				$ussd_text = "Cost of Meat sold";
 			ussd_proceed($ussd_text);
-		}else if (count($details)==4){
+		}else if (count($details)==5){
 			if($isSwahili == 1)
 				$ussd_text = "";
 			else
 				$ussd_text = "Cost of drinks sold";
 			ussd_proceed($ussd_text);
 		}
-		else if (count($details)== 5){
+		else if (count($details)== 6){
 
 		}
-		else if (count($details)==6){
+		else if (count($details)==7){
 			$chapati = $details[1];
 			$ugali = $details[2];
 			$rice = $details[3];
