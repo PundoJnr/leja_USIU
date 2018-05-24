@@ -477,31 +477,31 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			ussd_proceed($ussd_text);
 		}else if (count($details)==2){
 			if($isSwahili == 1)
-				$ussd_text = "Thamani ya";
+				$ussd_text = "Thamani ya ugali uliyouza";
 			else
 				$ussd_text = "Cost of Ugali sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==3){
 			if($isSwahili == 1)
-				$ussd_text = "";
+				$ussd_text = "Thamani ya mboga uliyouza";
 			else
 				$ussd_text = "Cost of Greens sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==4){
 				if($isSwahili == 1)
-					$ussd_text = "";
+					$ussd_text = "Thamani ya wali uliyouza";
 				else
 					$ussd_text = "Cost of Rice sold";
 				ussd_proceed($ussd_text);
 		}else if (count($details) == 4){
 			if ($isSwahili == 1)
-				$ussd_text = "";
+				$ussd_text = "Thamani ya nyama uliyouza";
 			else
 				$ussd_text = "Cost of Meat sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==5){
 			if($isSwahili == 1)
-				$ussd_text = "";
+				$ussd_text = "Th";
 			else
 				$ussd_text = "Cost of drinks sold";
 			ussd_proceed($ussd_text);
