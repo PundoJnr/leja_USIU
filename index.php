@@ -525,7 +525,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 				$t_bal = $row["balance"] + $chapati + $ugali + $rice + $greens + $meat + $drinks ;
 			} else {	
 				echo "0 results";
-		 $sql = "INSERT INTO $active_user (chapati,ugali,rice,greens,meat,drinks,balance) VALUES ('$veges','$onions','$cereals','$fruits','$others','$balance')";
+		 $sql = "INSERT INTO $active_user (chapati,ugali,rice,greens,meat,drinks,balance) VALUES ('$chapati','$ugali','$rice','$greens','$meat','$drinks','$balance')";
 			
 			if($conne->query($sql) == TRUE){
 				if($isSwahili == 1)
@@ -847,5 +847,6 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 
 		}
 	}
+}
 }
 ?>
