@@ -501,7 +501,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			ussd_proceed($ussd_text);
 		}else if (count($details)==5){
 			if($isSwahili == 1)
-				$ussd_text = "Th";
+				$ussd_text = "Thamani ya vinywaji uliyouza";
 			else
 				$ussd_text = "Cost of drinks sold";
 			ussd_proceed($ussd_text);
