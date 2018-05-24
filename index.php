@@ -471,13 +471,13 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 	function update_purchases_hotel($details,$phone,$active_user,$conne){
 		if (count($details)==1){
 			if ($isSwahili == 1)
-				$ussd_text ="";
+				$ussd_text ="Thamani ya Chapati uliyouza";
 			else
 				$ussd_text ="Cost of Chapati sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==2){
 			if($isSwahili == 1)
-				$ussd_text = "";
+				$ussd_text = "Thamani ya";
 			else
 				$ussd_text = "Cost of Ugali sold";
 			ussd_proceed($ussd_text);
