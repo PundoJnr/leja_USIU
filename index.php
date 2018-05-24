@@ -517,17 +517,28 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			$meat = $details[5];
 			$drinks = $details[6];
 		}
-
 		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
 		$result = $conne->query($sql);
 		if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				//Calculations
-			    $t_bal = $row["balance"] + $ugali + $rice + $chapati + $greens + $meat;
-			} else {
-			    echo "0 results";
-			}			
-	}
+				$t_bal = $row["balance"] + $chapati + $ugali + $rice + $greens + $meat + $drinks;
+			} else {	
+				echo "0 results";
+		 $sql = "INSERT INTO $active_user (chapati,ugali,onions,cereals,fruits,others,balance) VALUES ('$veges','$onions','$cereals','$fruits','$others','$balance')";
+			
+			if($conne->query($sql) == TRUE){
+				if($isSwahili == 1)
+					$ussd_text="END \n Umeandika manunuzi kwa mafanikio";  
+				else 
+						$ussd_text="END \nYou have successfully recorded your purchases";  
+				ussd_proceed($ussd_text); 
+			}
+			else{
+				echo "error: ".$sql ."\n" .$conne->error;
+			}
+		}
+	
 
     function update_purchases($details,$phone, $active_user, $conne){
 	    if (count($details)==1){ 
