@@ -522,10 +522,10 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				//Calculations
-				$t_bal = $row["balance"] + $chapati + $ugali + $rice + $greens + $meat + $drinks;
+				$t_bal = $row["balance"] + $chapati + $ugali + $rice + $greens + $meat + $drinks ;
 			} else {	
 				echo "0 results";
-		 $sql = "INSERT INTO $active_user (chapati,ugali,rice,greens,fruits,others,balance) VALUES ('$veges','$onions','$cereals','$fruits','$others','$balance')";
+		 $sql = "INSERT INTO $active_user (chapati,ugali,rice,greens,meat,drinks,balance) VALUES ('$veges','$onions','$cereals','$fruits','$others','$balance')";
 			
 			if($conne->query($sql) == TRUE){
 				if($isSwahili == 1)
