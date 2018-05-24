@@ -67,7 +67,8 @@
 				    case 4: 
 						//Loans 
 						if($isSwahili == 1)
-							$ussd_text = "END \n HUNA USAHIHI WA MIKOPO YA LEJA KWA WAKATI HUU. LAZIMA UTUMIE LEJA KWA ZAIDI YA MIEZI SITA\nASANTE."
+						$ussd_text = "END \n HUNA USAHIHI WA MIKOPO YA LEJA KWA WAKATI HUU. LAZIMA UTUMIE LEJA KWA ZAIDI YA MIEZI SITA\nASANTE.";
+						else
 				   		$ussd_text="END \n YOU ARE NOT LEGIBLE FOR LEJA LOANS AT THE MOMENT. YOU MUST HAVE USED LEJA FOR MORE THAN 6 MONTHS\nTHANK YOU.";  
 			   			ussd_proceed($ussd_text);
 				    	break;
@@ -244,7 +245,7 @@
 	}
 	function create_table_mamamboga($phone, $conne){
 		$tableName = "lj" .$phone;
-		$sql "CREATE TABLE $tableName (
+		$sql = "CREATE TABLE $tableName (
 			_date TIMESTAMP,
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			purchases INT(30),
@@ -472,41 +473,43 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 			if ($isSwahili == 1)
 				$ussd_text ="";
 			else
-				$ussd_text ="";
+				$ussd_text ="Cost of Chapati sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==2){
 			if($isSwahili == 1)
 				$ussd_text = "";
 			else
-				$ussd_text = "";
+				$ussd_text = "Cost of Ugali sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==3){
 			if($isSwahili == 1)
 				$ussd_text = "";
 			else
-				$ussd_text = "";
+				$ussd_text = "Cost of Greens sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details) == 3){
 			if ($isSwahili == 1)
 				$ussd_text = "";
 			else
-				$ussd_text = "";
+				$ussd_text = "Cost of Meat sold";
 			ussd_proceed($ussd_text);
 		}else if (count($details)==4){
 			if($isSwahili == 1)
 				$ussd_text = "";
 			else
-				$ussd_text = "";
+				$ussd_text = "Cost of drinks sold";
 			ussd_proceed($ussd_text);
 		}
 		else if (count($details)== 5){
 
 		}
 		else if (count($details)==6){
-			$ = $details[1];
-			$ = $details[2];
-			$ = $details[3];
-			$ = $details[4];
+			$chapati = $details[1];
+			$ugali = $details[2];
+			$rice = $details[3];
+			$greens = $details[4];
+			$meat = $details[5];
+			$drinks = $details[6];
 		}
 
 		$sql = "SELECT  balance FROM $active_user ORDER BY id DESC LIMIT 1";
@@ -514,7 +517,7 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 		if ($result->num_rows > 0) {
 				$row = $result->fetch_assoc();
 				//Calculations
-			    $t_bal = $row["balance"] + $ + $ + $ + $ + $;
+			    $t_bal = $row["balance"] + $ugali + $rice + $chapati + $greens + $meat;
 			} else {
 			    echo "0 results";
 			}			
@@ -827,4 +830,5 @@ function update_purchases_mamamboga($details,$phone,$active_user,$conne){
 
 		}
 	}
+}
 ?>
